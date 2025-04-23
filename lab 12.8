@@ -1,0 +1,58 @@
+class String:
+    """
+    A class to represent a string and perform string operations such as:
+    a) Overloading the `+=` operator for concatenation.
+    b) Converting uppercase letters to lowercase.
+    c) Converting lowercase letters to uppercase.
+    """
+    
+    def __init__(self, value=""):
+        self.value = value
+
+    def __iadd__(self, other):
+        """
+        Overloads the `+=` operator to concatenate the current string with another string.
+        """
+        if isinstance(other, String):
+            self.value += other.value
+        elif isinstance(other, str):
+            self.value += other
+        else:
+            raise TypeError("Operand must be of type 'String' or 'str'.")
+        return self
+
+    def toLower(self):
+        """
+        Converts all uppercase characters in the string to lowercase.
+        """
+        self.value = self.value.lower()
+
+    def toUpper(self):
+        """
+        Converts all lowercase characters in the string to uppercase.
+        """
+        self.value = self.value.upper()
+
+    def __str__(self):
+        """
+        Returns the string representation of the object.
+        """
+        return self.value
+
+# Example usage
+string1 = String("Hello")
+string2 = String(" World!")
+
+# Testing overloaded `+=` operator for concatenation
+print("Original string1:", string1)
+print("Original string2:", string2)
+string1 += string2
+print("After concatenation:", string1)
+
+# Testing toLower method
+string1.toLower()
+print("After converting to lowercase:", string1)
+
+# Testing toUpper method
+string1.toUpper()
+print("After converting to uppercase:", string1)
