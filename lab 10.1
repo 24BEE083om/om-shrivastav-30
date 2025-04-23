@@ -1,0 +1,31 @@
+import csv
+
+def create_csv(filename, data):
+    """
+    Create a CSV file with the given data.
+
+    Args:
+        filename (str): Name of the CSV file to create.
+        data (list of list): Data to write to the CSV file, where each inner list is a row.
+
+    Returns:
+        None
+    """
+    # Open the file in write mode
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Write each row of data to the CSV file
+        writer.writerows(data)
+
+# Example usage
+filename = "example.csv"
+data = [
+    ["Name", "Age", "Department"],
+    ["Alice", 30, "HR"],
+    ["Bob", 25, "Finance"],
+    ["Charlie", 35, "Engineering"]
+]
+
+create_csv(filename, data)
+print(f"CSV file '{filename}' has been created successfully!")
