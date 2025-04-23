@@ -1,0 +1,13 @@
+def average_list(lst, index=0, total_sum=0, count=0):
+    # Base case: if index is beyond the last element, return the average
+    if index == len(lst):
+        if count == 0:  # To prevent division by zero in case the list is empty
+            return 0
+        return total_sum / count
+    
+    # Add current element to total sum and increase the count
+    return average_list(lst, index + 1, total_sum + lst[index], count + 1)
+
+# Example usage:
+my_list = [1, 2, 3, 4, 5]
+print(average_list(my_list))  # Output will be 3.0
