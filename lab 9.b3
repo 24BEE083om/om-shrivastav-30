@@ -1,0 +1,23 @@
+def binary_equivalent(number):
+    """
+    Find the binary equivalent of a positive integer.
+
+    Args:
+        number (int): A positive integer.
+
+    Returns:
+        str: The binary representation of the number.
+    """
+    if number < 0:
+        return "Please enter a positive integer."
+    
+    # Use the built-in bin() function to find the binary equivalent
+    return bin(number)[2:]  # Slice off the "0b" prefix
+
+# Example usage
+try:
+    user_input = int(input("Enter a positive integer: "))
+    result = binary_equivalent(user_input)
+    print(f"The binary equivalent of {user_input} is {result}")
+except ValueError:
+    print("Invalid input! Please enter a valid positive integer.")
