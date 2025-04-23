@@ -1,0 +1,30 @@
+class Weather:
+    """
+    A class to represent weather parameters and overload the 'in' operator
+    to check for the presence of an item in the list.
+    """
+    
+    def __init__(self, parameters):
+        self.parameters = parameters
+
+    def __contains__(self, item):
+        """
+        Check whether an item is present in the weather parameters list.
+
+        Args:
+            item: The item to check.
+
+        Returns:
+            bool: True if the item is in the list, False otherwise.
+        """
+        return item in self.parameters
+
+# Example usage
+weather_data = Weather(["Temperature", "Humidity", "Wind Speed", "Precipitation"])
+
+# Check for the presence of items using the overloaded 'in' operator
+print("Temperature" in weather_data)  # Output: True
+print("Pressure" in weather_data)     # Output: False
+
+# Display weather parameters
+print("Weather parameters:", weather_data.parameters)
