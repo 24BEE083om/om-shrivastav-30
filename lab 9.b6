@@ -1,0 +1,16 @@
+def sanitize_list(lst, index=0):
+    # Base case: if index is beyond the last element, return the list
+    if index == len(lst):
+        return lst
+    
+    # If the current element is negative, replace it with 0
+    if lst[index] < 0:
+        lst[index] = 0
+    
+    # Recursively process the next element
+    return sanitize_list(lst, index + 1)
+
+# Example usage:
+my_list = [1, -2, 3, -4, 5]
+sanitize_list(my_list)
+print(my_list)  # Output will be [1, 0, 3, 0, 5]
