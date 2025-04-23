@@ -1,0 +1,22 @@
+def reverse_list(numbers):
+    """
+    Recursively reverse a list of numbers.
+
+    Args:
+        numbers (list): The list to reverse.
+
+    Returns:
+        list: The reversed list.
+    """
+    # Base case: If the list is empty or has one element, return the list
+    if len(numbers) <= 1:
+        return numbers
+    
+    # Recursive case: Reverse the rest of the list and append the first element to the end
+    return reverse_list(numbers[1:]) + [numbers[0]]
+
+# Example usage
+num_list = [1, 2, 3, 4, 5]
+result = reverse_list(num_list)
+print(f"Original list: {num_list}")
+print(f"Reversed list: {result}")
