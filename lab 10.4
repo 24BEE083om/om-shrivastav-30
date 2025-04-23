@@ -1,0 +1,39 @@
+import os
+import shutil
+
+def create_and_copy(source_dir, file_name, target_dir):
+    """
+    Create a new subdirectory and copy a specific file into it.
+
+    Args:
+        source_dir (str): Path of the source subdirectory containing the file.
+        file_name (str): Name of the file to copy.
+        target_dir (str): Path of the new subdirectory to be created.
+
+    Returns:
+        None
+    """
+    try:
+        # Create the target subdirectory if it doesn't exist
+        os.makedirs(target_dir, exist_ok=True)
+        print(f"Subdirectory '{target_dir}' created successfully.")
+        
+        # Construct full paths for the source file and the target file
+        source_path = os.path.join(source_dir, file_name)
+        target_path = os.path.join(target_dir, file_name)
+
+        # Copy the file
+        shutil.copy(source_path, target_path)
+        print(f"File '{file_name}' copied from '{source_dir}' to '{target_dir}' successfully.")
+    
+    except FileNotFoundError:
+        print(f"Error: The file '{file_name}' does not exist in '{source_dir}'.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+# Example usage
+source_directory = "source_subdir"   # Replace with the path of your source subdirectory
+file_to_copy = "example.txt"         # Replace with the name of the file to copy
+target_directory = "new_subdir"      # Replace with the name of the new subdirectory
+
+create_and_copy(source_directory, file_to_copy, target_directory)
