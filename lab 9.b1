@@ -1,0 +1,26 @@
+def prime_factors(n, factor=2):
+    """
+    Recursively obtain the prime factors of a given positive integer.
+
+    Args:
+        n (int): The number to factorize.
+        factor (int): The current factor to check (default is 2).
+
+    Returns:
+        list: A list containing the prime factors of n.
+    """
+    # Base case: If n becomes 1, return an empty list
+    if n == 1:
+        return []
+
+    # Check if the current factor divides n
+    if n % factor == 0:
+        return [factor] + prime_factors(n // factor, factor)
+    else:
+        # Increment the factor to test the next number
+        return prime_factors(n, factor + 1)
+
+# Example usage
+number = 56
+result = prime_factors(number)
+print(f"Prime factors of {number}: {result}")
