@@ -1,0 +1,42 @@
+def merge_files_alternatively(file1, file2, target_file):
+    """
+    Merge lines from two files alternatively and write the result to a new file.
+    Remaining lines from the larger file are appended.
+
+    Args:
+        file1 (str): Path to the first file.
+        file2 (str): Path to the second file.
+        target_file (str): Path to the target file where the merged content is written.
+    """
+    try:
+        # Open both files and read their lines
+        with open(file1, 'r') as f1, open(file2, 'r') as f2:
+            lines1 = f1.readlines()
+            lines2 = f2.readlines()
+
+        # Open the target file for writing
+        with open(target_file, 'w') as target:
+            # Iterate over both lists of lines simultaneously
+            for line1, line2 in zip(lines1, lines2):
+                target.write(line1.strip() + '\n')
+                target.write(line2.strip() + '\n')
+            
+            # Add remaining lines from the larger file
+            if len(lines1) > len(lines2):
+                target.writelines(line.strip() + '\n' for line in lines1[len(lines2):])
+            elif len(lines2) > len(lines1):
+                target.writelines(line.strip() + '\n' for line in lines2[len(lines1):])
+        
+        print(f"Merged content has been written to '{target_file}' successfully!")
+    
+    except FileNotFoundError:
+        print(f"Error: One of the source files does not exist.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+# Example usage
+file1 = "file1.txt"  # Replace with the path to the first file
+file2 = "file2.txt"  # Replace with the path to the second file
+target_file = "merged.txt"  # Replace with the path for the target file
+
+merge_files_alternatively(file1, file2, target_file)
