@@ -1,0 +1,21 @@
+def get_integer():
+    """
+    Prompt the user to enter an integer and handle invalid inputs gracefully.
+
+    Returns:
+        int: The valid integer input.
+    """
+    while True:
+        user_input = input("Please enter an integer: ")
+        try:
+            # Try to convert the input to an integer
+            num = int(user_input)
+            print(f"You entered a valid integer: {num}")
+            return num
+        except ValueError:
+            # Handle the case where the input is not an integer
+            print("Error: That is not a valid integer. Please try again.")
+
+# Example usage
+integer = get_integer()
+print(f"The valid integer received is: {integer}")
