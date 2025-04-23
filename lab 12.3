@@ -1,0 +1,72 @@
+import math
+
+class Solid:
+    """
+    A class to represent a solid and calculate its surface area and volume.
+    """
+
+    def __init__(self, solid_type):
+        self.solid_type = solid_type.lower()
+        self.data = {}
+
+    def accept_data(self):
+        """
+        Accept data relevant to the solid based on its type.
+        """
+        if self.solid_type == "sphere":
+            self.data["radius"] = float(input("Enter the radius of the sphere: "))
+        elif self.solid_type == "cube":
+            self.data["side"] = float(input("Enter the side length of the cube: "))
+        elif self.solid_type == "cylinder":
+            self.data["radius"] = float(input("Enter the radius of the cylinder: "))
+            self.data["height"] = float(input("Enter the height of the cylinder: "))
+        else:
+            print("Unsupported solid type. Please choose sphere, cube, or cylinder.")
+
+    def calculate_surface_area(self):
+        """
+        Calculate the surface area of the solid.
+        """
+        if self.solid_type == "sphere":
+            radius = self.data.get("radius", 0)
+            return 4 * math.pi * radius**2
+        elif self.solid_type == "cube":
+            side = self.data.get("side", 0)
+            return 6 * side**2
+        elif self.solid_type == "cylinder":
+            radius = self.data.get("radius", 0)
+            height = self.data.get("height", 0)
+            return 2 * math.pi * radius * (radius + height)
+        else:
+            return None
+
+    def calculate_volume(self):
+        """
+        Calculate the volume of the solid.
+        """
+        if self.solid_type == "sphere":
+            radius = self.data.get("radius", 0)
+            return (4/3) * math.pi * radius**3
+        elif self.solid_type == "cube":
+            side = self.data.get("side", 0)
+            return side**3
+        elif self.solid_type == "cylinder":
+            radius = self.data.get("radius", 0)
+            height = self.data.get("height", 0)
+            return math.pi * radius**2 * height
+        else:
+            return None
+
+# Example usage
+solid_type = input("Enter the type of solid (sphere, cube, cylinder): ").strip()
+solid = Solid(solid_type)
+solid.accept_data()
+
+surface_area = solid.calculate_surface_area()
+volume = solid.calculate_volume()
+
+if surface_area is not None and volume is not None:
+    print(f"The surface area of the {solid_type} is: {surface_area:.2f}")
+    print(f"The volume of the {solid_type} is: {volume:.2f}")
+else:
+    print("Invalid solid type or missing data.")
