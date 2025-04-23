@@ -1,0 +1,30 @@
+def power(a, b):
+    """
+    Recursively calculate a^b (a raised to the power of b).
+
+    Args:
+        a (int): Base number.
+        b (int): Exponent (must be a non-negative integer).
+
+    Returns:
+        int: Result of a^b.
+    """
+    # Base case: Any number raised to the power of 0 is 1
+    if b == 0:
+        return 1
+    
+    # Recursive case: Multiply a by the result of a^(b-1)
+    return a * power(a, b - 1)
+
+# Example usage
+try:
+    base = int(input("Enter the base number (a): "))
+    exponent = int(input("Enter the exponent (b): "))
+    
+    if exponent < 0:
+        print("Please enter a non-negative exponent.")
+    else:
+        result = power(base, exponent)
+        print(f"{base} raised to the power of {exponent} is: {result}")
+except ValueError:
+    print("Invalid input! Please enter valid integers.")
