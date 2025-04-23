@@ -1,0 +1,11 @@
+print("Om Shrivastava")
+print("24BEE083")
+A = int(input("Marks in Maths ="))
+B = int(input("Marks in English ="))
+C = int(input("Marks in Computer ="))
+D = int(input("Marks in Science ="))
+E = int(input("Marks in Economics ="))
+
+average = ((A+B+C+D+E)/5)
+print("Average marks of student is:", average)
+
