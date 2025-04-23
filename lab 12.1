@@ -1,0 +1,54 @@
+class Complex:
+    """
+    A class to represent complex numbers with real and imaginary parts
+    and perform basic arithmetic operations on them.
+    """
+
+    def __init__(self, real, imaginary):
+        self.real = real
+        self.imaginary = imaginary
+
+    def __add__(self, other):
+        # Addition of two complex numbers
+        return Complex(self.real + other.real, self.imaginary + other.imaginary)
+
+    def __sub__(self, other):
+        # Subtraction of two complex numbers
+        return Complex(self.real - other.real, self.imaginary - other.imaginary)
+
+    def __mul__(self, other):
+        # Multiplication of two complex numbers
+        real_part = self.real * other.real - self.imaginary * other.imaginary
+        imaginary_part = self.real * other.imaginary + self.imaginary * other.real
+        return Complex(real_part, imaginary_part)
+
+    def __truediv__(self, other):
+        # Division of two complex numbers
+        denominator = other.real**2 + other.imaginary**2
+        if denominator == 0:
+            raise ZeroDivisionError("Division by zero is not allowed.")
+        real_part = (self.real * other.real + self.imaginary * other.imaginary) / denominator
+        imaginary_part = (self.imaginary * other.real - self.real * other.imaginary) / denominator
+        return Complex(real_part, imaginary_part)
+
+    def __str__(self):
+        # String representation of a complex number
+        return f"{self.real} + {self.imaginary}i"
+
+# Example usage
+c1 = Complex(3, 2)  # First complex number: 3 + 2i
+c2 = Complex(1, 7)  # Second complex number: 1 + 7i
+
+# Perform arithmetic operations
+addition = c1 + c2
+subtraction = c1 - c2
+multiplication = c1 * c2
+division = c1 / c2
+
+# Display results
+print("First complex number:", c1)
+print("Second complex number:", c2)
+print("Addition:", addition)
+print("Subtraction:", subtraction)
+print("Multiplication:", multiplication)
+print("Division:", division)
