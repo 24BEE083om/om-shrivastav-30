@@ -1,0 +1,8 @@
+name = input("Enter the name")
+rollnum = input("Enter the rollnum")
+Email =input("Enter the email")
+mobilenum=input("Enter the mobile number")
+print(f"Name: {name}")
+print(f"Roll Number: {rollnum}")
+print(f"Email: {Email}")
+print(f"Mobile number: {mobilenum}")
