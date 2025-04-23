@@ -1,0 +1,78 @@
+class Time:
+    """
+    A class to represent time in hours, minutes, and seconds and perform
+    arithmetic operations like addition and subtraction.
+    """
+
+    def __init__(self, hours=0, minutes=0, seconds=0):
+        # Normalize time values
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
+        self.normalize_time()
+
+    def normalize_time(self):
+        """
+        Normalize time values to ensure seconds and minutes are within valid range.
+        """
+        # Adjust seconds to minutes
+        self.minutes += self.seconds // 60
+        self.seconds %= 60
+        # Adjust minutes to hours
+        self.hours += self.minutes // 60
+        self.minutes %= 60
+
+    def __add__(self, other):
+        """
+        Add two Time objects.
+        """
+        return Time(
+            self.hours + other.hours,
+            self.minutes + other.minutes,
+            self.seconds + other.seconds
+        )
+
+    def __sub__(self, other):
+        """
+        Subtract two Time objects.
+        """
+        total_seconds_self = self.to_seconds()
+        total_seconds_other = other.to_seconds()
+        if total_seconds_self < total_seconds_other:
+            raise ValueError("Resulting time cannot be negative.")
+        total_seconds_result = total_seconds_self - total_seconds_other
+        return Time.from_seconds(total_seconds_result)
+
+    def to_seconds(self):
+        """
+        Convert time to total seconds.
+        """
+        return self.hours * 3600 + self.minutes * 60 + self.seconds
+
+    @classmethod
+    def from_seconds(cls, total_seconds):
+        """
+        Create a Time object from total seconds.
+        """
+        hours = total_seconds // 3600
+        total_seconds %= 3600
+        minutes = total_seconds // 60
+        seconds = total_seconds % 60
+        return cls(hours, minutes, seconds)
+
+    def __str__(self):
+        """
+        String representation of the Time object.
+        """
+        return f"{self.hours:02d}:{self.minutes:02d}:{self.seconds:02d}"
+
+# Example usage
+time1 = Time(2, 45, 50)  # 2 hours, 45 minutes, 50 seconds
+time2 = Time(1, 20, 30)  # 1 hour, 20 minutes, 30 seconds
+
+print("Time 1:", time1)
+print("Time 2:", time2)
+
+# Addition
+time_addition = time1 + time2
+print("Addition:", time
