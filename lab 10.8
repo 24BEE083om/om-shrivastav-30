@@ -1,0 +1,36 @@
+def clean_text_file(source_file, target_file):
+    """
+    Remove the words 'a', 'the', 'an' from the source file and write the result to the target file.
+
+    Args:
+        source_file (str): The name of the source text file to read from.
+        target_file (str): The name of the target text file to write to.
+    """
+    try:
+        # Open source file in read mode
+        with open(source_file, 'r') as src:
+            content = src.read()
+        
+        # Words to remove
+        words_to_remove = ['a', 'the', 'an']
+        
+        # Replace occurrences of the words with a blank space
+        for word in words_to_remove:
+            content = content.replace(f' {word} ', ' ')
+        
+        # Write the modified content to the target file
+        with open(target_file, 'w') as tgt:
+            tgt.write(content)
+        
+        print(f"Modified content has been written to '{target_file}'.")
+    
+    except FileNotFoundError:
+        print(f"Error: The source file '{source_file}' does not exist.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+# Example usage
+source = "source.txt"  # Replace with your source file name
+target = "target.txt"  # Replace with your target file name
+
+clean_text_file(source, target)
