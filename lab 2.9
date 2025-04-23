@@ -1,0 +1,24 @@
+print("Om Shrivastava")
+print("24BEE083")
+import math as m
+x = int(input("Enter the x coordinate:"))
+y = int(input("Enter the y coordinate:"))
+print("Enter the coordinates of the origin:")
+x1 = int(input("Enter the x1 coordinate:"))
+y1 = int(input("Enter the y1 coordinate:"))
+
+rad = int(input("Enter the radius of the circle:"))
+
+c = x-x1
+d = y-y1
+f = m.pow(c,2)
+g = m.pow(d,2)
+l = f+g
+dis = m.sqrt(l)
+if(dis == rad):
+    print("the point is on the circle")
+elif(dis>rad):
+    print("the point is outside the circle")
+else:
+    print("The point is inside the cirle")
+
