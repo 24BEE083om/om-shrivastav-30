@@ -1,0 +1,16 @@
+print("om shrivastav")
+print("24BEE083")
+num = int(input("Enter a number"))
+def armstrong(a):
+    n=0
+    sum=0
+    f=a
+    while(a>0):
+        n=a%10
+        sum=(n*n*n)+sum
+        a=a//10
+    if f==sum:
+        print(f"{f} is an Armstrong number")
+    else:
+        print(f"{f} is not an armstrong number")
+
