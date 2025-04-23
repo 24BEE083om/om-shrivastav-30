@@ -1,0 +1,37 @@
+import pickle
+
+class Employee:
+    """
+    Represents an Employee object.
+    """
+    def __init__(self, empcode, empname, date_of_joining, salary):
+        self.empcode = empcode
+        self.empname = empname
+        self.date_of_joining = date_of_joining
+        self.salary = salary
+    
+    def __str__(self):
+        return (f"Employee Code: {self.empcode}, Name: {self.empname}, "
+                f"Date of Joining: {self.date_of_joining}, Salary: {self.salary}")
+
+# Serialize the Employee object
+def serialize_employee(employee, filename):
+    with open(filename, 'wb') as file:
+        pickle.dump(employee, file)
+    print(f"Employee data serialized and saved to '{filename}'")
+
+# Deserialize the Employee object
+def deserialize_employee(filename):
+    try:
+        with open(filename, 'rb') as file:
+            employee = pickle.load(file)
+        print("Employee data deserialized successfully!")
+        return employee
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' does not exist.")
+        return None
+
+# Example usage
+employee = Employee("E123", "Alice", "2023-05-10", 50000)
+
+# Serialize the Employee object
