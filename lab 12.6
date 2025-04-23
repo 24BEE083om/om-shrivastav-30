@@ -1,0 +1,49 @@
+class Date:
+    """
+    A class to represent a date with day, month, and year attributes.
+    """
+
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    def __eq__(self, other):
+        """
+        Overload the '==' operator to compare two Date objects.
+
+        Args:
+            other (Date): The other Date object to compare.
+
+        Returns:
+            bool: True if the two dates are equal, False otherwise.
+        """
+        return (self.day == other.day and
+                self.month == other.month and
+                self.year == other.year)
+
+    def __str__(self):
+        """
+        String representation of the Date object.
+        """
+        return f"{self.day:02d}/{self.month:02d}/{self.year}"
+
+# Example usage
+date1 = Date(5, 4, 2023)
+date2 = Date(5, 4, 2023)
+date3 = Date(6, 4, 2023)
+
+print("Date 1:", date1)
+print("Date 2:", date2)
+print("Date 3:", date3)
+
+# Compare dates using the overloaded '==' operator
+if date1 == date2:
+    print("Date 1 is equal to Date 2.")
+else:
+    print("Date 1 is not equal to Date 2.")
+
+if date1 == date3:
+    print("Date 1 is equal to Date 3.")
+else:
+    print("Date 1 is not equal to Date 3.")
